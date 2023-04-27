@@ -4,34 +4,45 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-class BrowserActionExercise {
+public class BrowserActionExercise {
 
-    public static void main(String[] args) {
-        // Set up the Chrome driver
+    private WebDriver driver;
+
+    public BrowserActionExercise() {
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
+    }
 
-
-        // Navigate to the Google website using 'get'
+    public void navigateToGoogle() {
         driver.get("https://www.google.com");
+    }
 
-        // Navigate to Java Code Geeks website using 'navigate' method
+    public void navigateToJavaCodeGeeks() {
         driver.navigate().to("https://www.javacodegeeks.com/selenium-tutorials");
+    }
 
-        //Gets the current URL
-        System.out.println("the current URL: " +driver.getCurrentUrl());
-        driver.getCurrentUrl();
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
 
-        //Gets Title
-        driver.getTitle();
-        System.out.println("The current Title: "+driver.getTitle());
+    public String getTitle() {
+        return driver.getTitle();
+    }
 
-        //Navigate within the browser: refresh, back, forward
+    public void refresh() {
         driver.navigate().refresh();
-        driver.navigate().back();
-        driver.navigate().back();
+    }
 
-        // Close the browser
+    public void goBack() {
+        driver.navigate().back();
+    }
+
+    public void goForward() {
+        driver.navigate().forward();
+    }
+
+
+    public void close() {
         driver.quit();
     }
 }
