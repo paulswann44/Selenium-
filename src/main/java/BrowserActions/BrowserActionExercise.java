@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class BrowserActionExercise {
 
     private WebDriver driver;
+    private int time = 2000;
 
     public BrowserActionExercise() {
         WebDriverManager.chromedriver().setup();
@@ -41,8 +42,15 @@ public class BrowserActionExercise {
         driver.navigate().forward();
     }
 
-
     public void close() {
         driver.quit();
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int getTime() {
+        return time;
     }
 }
