@@ -1,11 +1,15 @@
 package BrowserActions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class BrowserActions {
-    public static void main(String[] args) {
+import java.io.File;
+import java.io.IOException;
+
+public class BrowserActionsNotes {
+    public static void main(String[] args) throws IOException {
         // **Set up the Chrome driver**
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -70,8 +74,33 @@ public class BrowserActions {
         driver.manage().window().setPosition(new Point(500,200));
 
 
+        //Screen sizes
+        driver.manage().window().minimize();
+        driver.manage().window().maximize();
+        driver.manage().window().fullscreen();
 
+        //Take a screenshot
+        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
+        //This will save the file
+        FileUtils.copyFile(srcFile,new File("./image1.png"));
+
+        //Copy an image of a class such as the Google logo
+        WebElement element = driver.findElement(By.cssSelector("name of class"));
+        File srcFile1 = (element.getScreenshotAs(OutputType.FILE));
+        FileUtils.copyFile(srcFile1,new File("./image2.png"));
+
+        // Create a new JavascriptExecutor instance with the driver
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        // Find the "btnI" button element by its name
+        WebElement button = driver.findElement(By.name("btnI"));
+
+        // Use the JavascriptExecutor to click on the button
+        js.executeScript("arguments[0].click();", button);
+
+        // Use the JavascriptExecutor to log a message to the console
+        js.executeScript("console.log('Hello World')");
 
 
 
