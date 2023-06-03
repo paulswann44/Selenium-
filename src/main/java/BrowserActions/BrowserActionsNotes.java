@@ -34,6 +34,8 @@ public class BrowserActionsNotes {
         driver.navigate().back();
 
 
+
+
         //**Switching Windows**
         String originalWindow = driver.getWindowHandle();
         driver.switchTo().window(originalWindow);
@@ -102,6 +104,14 @@ public class BrowserActionsNotes {
         // Use the JavascriptExecutor to log a message to the console
         js.executeScript("console.log('Hello World')");
 
+        //alert
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("alert('Finished with testing');");
+        
+        Alert alert = driver.switchTo().alert();
+        System.out.println("\n Alert Text: " + alert.getText());
+        Thread.sleep(2000);
+        alert.accept();
 
 
 
