@@ -54,7 +54,7 @@ public class MouseActionsNotes {
         driver.quit();
 
         Thread.sleep(3000);
-        System.out.println("( ◑‿◑)ɔ┏🍟--🍔┑٩(^◡^ )");
+        System.out.println("(👍≖‿‿≖)👍 👍(≖‿‿≖👍)... All is good with the code");
 
 
 
