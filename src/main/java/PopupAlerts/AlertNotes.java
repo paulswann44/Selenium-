@@ -21,6 +21,10 @@ public class AlertNotes {
         String buttonXPath = "//button[text()='Click for JS Alert']";
         String confirmXPath = "//button[onclick='jsconfirm()']";
         String cxld = "You clicked: Cancel";
+        String promptXPath = "//button[onclick='jspropmt()']";
+        String keys = "hello world";
+        String promptMessage = "You are finished with prompts";
+
 
         driver.get(url);
         driver.findElement(By.xpath(buttonXPath)).click();
@@ -40,11 +44,22 @@ public class AlertNotes {
         driver.findElement(By.xpath(confirmXPath)).click();
 
         Alert alert2 =driver.switchTo().alert();
-        System.out.println(alert2.getClass());
+        System.out.println(alert2.getText());
         Thread.sleep(5000);
         alert2.dismiss();
         if (driver.getPageSource().contains(cxld)) {
             System.out.println(cxld);
+            System.out.println("============================");
+        }
+
+        //js prompt
+        Alert alert3 = driver.switchTo().alert();
+        System.out.println(alert3.getText());
+        alert3.sendKeys(keys);
+        alert3.accept();
+        Thread.sleep(3000);
+        if (driver.getPageSource().contains(promptMessage)) {
+            System.out.println(promptMessage);
             System.out.println("============================");
         }
 
